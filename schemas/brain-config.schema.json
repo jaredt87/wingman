@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wingman.invalid/schemas/brain-config.schema.json",
+  "title": "Wingman runtime brain config",
+  "type": "object",
+  "required": [
+    "team",
+    "extends",
+    "modules",
+    "channel",
+    "identity",
+    "apply_gates",
+    "guards",
+    "promotion",
+    "overlay"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "team": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extends": {
+      "type": "object",
+      "required": [
+        "core"
+      ],
+      "properties": {
+        "core": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "modules": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "channel": {
+      "type": "object",
+      "required": [
+        "id",
+        "owner_consent",
+        "mode",
+        "free_text_policy"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "owner_consent": {
+          "enum": [
+            true,
+            false,
+            "unknown",
+            null
+          ]
+        },
+        "mode": {
+          "enum": [
+            "shadow",
+            "recommend",
+            "act"
+          ]
+        },
+        "free_text_policy": {
+          "enum": [
+            "redirect_to_form",
+            "read_only",
+            "none"
+          ]
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "verification",
+        "request_types"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "verification": {
+          "enum": [
+            "sso",
+            "handle_only",
+            "unknown",
+            null
+          ]
+        },
+        "request_types": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "allowed",
+              "second_approver"
+            ],
+            "properties": {
+              "allowed": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "second_approver": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "apply_gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "tool",
+          "workspaces_or_scope"
+        ],
+        "properties": {
+          "tool": {
+            "type": "string"
+          },
+          "workspaces_or_scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "guards": {
+      "type": "object",
+      "required": [
+        "add"
+      ],
+      "properties": {
+        "add": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "promotion": {
+      "type": "object",
+      "required": [
+        "recommend_when"
+      ],
+      "properties": {
+        "recommend_when": {
+          "type": "object",
+          "required": [
+            "min_requests",
+            "min_match_rate",
+            "max_confident_misses_in_last_20"
+          ],
+          "properties": {
+            "min_requests": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "min_match_rate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "max_confident_misses_in_last_20": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "overlay": {
+      "type": "object",
+      "required": [
+        "path"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
