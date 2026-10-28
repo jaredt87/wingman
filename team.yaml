@@ -54,7 +54,7 @@ guardrails:
   agent_can_merge_or_edit_workflows: unknown
   sensitive_data: [secrets, customer-sensitive data]
   production_approval: "Unknown; confirm the approving role and system."
-  apply_gates: []
+  apply_gates: null
   gates_never_bypassed: [repository review, CI checks, policy and confirmation gates]
 freshness:
   auto_refresh: []
