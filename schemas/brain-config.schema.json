@@ -103,7 +103,10 @@
                 }
               },
               "second_approver": {
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "mode": {
                 "enum": [
