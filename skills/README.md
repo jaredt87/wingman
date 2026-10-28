@@ -5,7 +5,7 @@ candidate skills as real usage provides evidence.
 
 - `ackos-control`: route designated state-changing work through a real,
   provider-backed ackOS integration; fail closed if the integration is absent.
-  This is workflow guidance, not a security boundary.
+  Like every skill here, this is workflow guidance, not a security boundary.
 - `terraform-plan-review`: review a saved plan for scope, destructive changes,
   IAM, and production risk; never apply it.
 - `go-change`: orient in a Go repo, make a scoped change, and run that repo's
