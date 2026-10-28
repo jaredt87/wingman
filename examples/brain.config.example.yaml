@@ -5,7 +5,6 @@ modules: {}
 channel:
   id: <request-channel-id>
   owner_consent: unknown
-  mode: shadow
   free_text_policy: redirect_to_form
 identity:
   verification: unknown
