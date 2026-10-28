@@ -29,7 +29,10 @@ contains a Wingman pointer.
 - Verify changes using the owning repository's documented checks. Report what
   was run and any checks that were not run.
 - When a requested state change is designated to run through ackOS, read
-  `skills/ackos-control/SKILL.md` and use only a real, configured,
+  the skill at the Wingman repository root:
+  `<Wingman-root>/skills/ackos-control/SKILL.md`. Resolve this path against
+  Wingman's root even when working from a sibling checkout; do not resolve it
+  against the current working directory. Use only a real, configured,
   provider-backed `ackos_control` integration. The skill, this GitHub
   connection, and the synthetic ackOS demo are not execution authority.
   If the real integration or its supported observation/input path is missing,
