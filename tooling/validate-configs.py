@@ -11,6 +11,10 @@ CASES = [
     (ROOT / "team.yaml", ROOT / "schemas/team.schema.json"),
     (ROOT / "examples/brain.config.example.yaml", ROOT / "schemas/brain-config.schema.json"),
 ]
+# Validate the generated root runtime config when a team checks it in.
+ROOT_RUNTIME_CONFIG = ROOT / "brain.config.yaml"
+if ROOT_RUNTIME_CONFIG.is_file():
+    CASES.append((ROOT_RUNTIME_CONFIG, ROOT / "schemas/brain-config.schema.json"))
 
 def main() -> int:
     failures = 0
