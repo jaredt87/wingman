@@ -399,7 +399,8 @@
         "sensitive_data",
         "production_approval",
         "apply_gates",
-        "gates_never_bypassed"
+        "gates_never_bypassed",
+        "agent_can_merge_or_edit_workflows"
       ],
       "additionalProperties": false,
       "properties": {
@@ -492,6 +493,7 @@
         "brain_changes_via",
         "automation_may_merge",
         "practice_review",
+        "pin_plugins_and_skills",
         "pin_plugins_and_skills"
       ],
       "additionalProperties": false,
@@ -541,7 +543,10 @@
           "additionalProperties": false
         },
         "pin_plugins_and_skills": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       }
     },
