@@ -42,7 +42,6 @@
       "required": [
         "id",
         "owner_consent",
-        "mode",
         "free_text_policy"
       ],
       "additionalProperties": false,
@@ -59,13 +58,6 @@
             false,
             "unknown",
             null
-          ]
-        },
-        "mode": {
-          "enum": [
-            "shadow",
-            "recommend",
-            "act"
           ]
         },
         "free_text_policy": {
@@ -99,7 +91,8 @@
             "type": "object",
             "required": [
               "allowed",
-              "second_approver"
+              "second_approver",
+              "mode"
             ],
             "properties": {
               "allowed": {
@@ -111,6 +104,13 @@
               },
               "second_approver": {
                 "type": "boolean"
+              },
+              "mode": {
+                "enum": [
+                  "shadow",
+                  "recommend",
+                  "act"
+                ]
               }
             },
             "additionalProperties": false
