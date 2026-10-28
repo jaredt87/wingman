@@ -159,7 +159,7 @@ identity:
       allowed: []
       second_approver: false
       mode: shadow
-apply_gates: []
+apply_gates: null
 guards:
   add: []
 promotion:
