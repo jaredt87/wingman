@@ -19,6 +19,7 @@ def main() -> int:
             data = yaml.safe_load(stream)
         with schema_path.open(encoding="utf-8") as stream:
             schema = json.load(stream)
+        Draft202012Validator.check_schema(schema)
         errors = sorted(Draft202012Validator(schema).iter_errors(data), key=lambda e: list(map(str, e.path)))
         if errors:
             failures += len(errors)
