@@ -1,1 +1,24 @@
-wingman
+# Wingman
+
+Wingman is a personal, cross-repository team brain for building software and
+cloud systems. It holds the shared working agreement and links to each
+repository's own authoritative instructions.
+
+## Start here
+
+1. Read [AGENTS.md](AGENTS.md) before working in this repository.
+2. Review [team.yaml](team.yaml) for known context and explicit open questions.
+3. Use [brain/context](brain/context/) to find each repository's purpose and
+   existing guidance.
+4. Review the [repo layout](brain/LAYOUT.md) and [two-week setup plan](brain/SETUP.md).
+
+The brain is intentionally conservative: repository-specific instructions and
+technical controls remain authoritative; this repository adds shared context
+and proposes human approval for consequential changes. See
+[constitution.md](constitution.md).
+
+## Maintenance
+
+Update shared guidance through a reviewed change to this repository. Keep
+unknown policies in [brain/questions.md](brain/questions.md), and remove them
+only when confirmed. Review lightly each month and more deeply each quarter.

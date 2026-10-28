@@ -1,0 +1,72 @@
+team:
+  name: wingman
+  type: [software, cloud]
+  purpose: "Help with all things building across the user's repositories."
+  success_90d:
+    - "Shared guidance exists for each active repository."
+    - "Agents follow repository-specific instructions and common review steps."
+    - "The brain remains current through a light monthly review."
+  anti_goals:
+    - "A stale second wiki nobody updates."
+    - "Extra process without value."
+    - "An agent with unapproved authority to make risky changes."
+people:
+  size: 1
+  roles: [cloud engineer, builder]
+  time_zones: [America/Denver]
+  on_call: false
+  brain_maintainers: [primary maintainer]
+tools:
+  agents: [terminal agents, IDE assistants, desktop chat]
+  agent_autonomy: run_with_approval
+  platforms: [macos]
+work:
+  repos:
+    daily: []
+    weekly:
+      - {name: ackOS-main, own_governance: true}
+    rarely: []
+  stack: [Terraform, Go, Python]
+  environments: [dev, production]
+  ci: "GitHub Actions where workflows exist; checks vary by repository."
+  path_to_production: "Provisional: branch → review → merge → deploy → verify; confirm per system."
+flow:
+  intake: null
+  done_means: null
+  review: {approvals: null, required_reviewers: []}
+  decisions_recorded_in: "Repository documentation where present; broader practice unknown."
+  top_request_types: null
+knowledge:
+  docs: "Repository READMEs and docs directories; see brain/context/ for pointers."
+  runbooks: null
+  channels: []
+  read_only_connectors: []
+guardrails:
+  never:
+    - "Expose or commit secrets or customer-sensitive data."
+    - "Bypass repository review, CI, or policy gates."
+    - "Make production, destructive, IAM, migration, or Terraform apply changes without action-specific human approval."
+  ask_first:
+    - "Any cloud write or production-affecting command."
+    - "Destructive Git operations, publishing, merging, or releasing."
+    - "Writing to external systems or handling sensitive data."
+  agent_credentials: unknown
+  sensitive_data: [secrets, customer-sensitive data]
+  production_approval: "Unknown; confirm the approving role and system."
+  gates_never_bypassed: [repository review, CI checks, policy and confirmation gates]
+freshness:
+  auto_refresh: []
+  brain_changes_via: pull_request
+  practice_review: {light: monthly, deep: quarterly}
+rollout:
+  load_via: [pointer_files]
+  pilot: {who: [primary maintainer], duration_days: 14}
+  multi_team: null
+open_questions:
+  - {question: "Which local repo contains the usual Terraform work, and how often is it used?", owner: primary maintainer, priority: P1}
+  - {question: "Which environments are real, and what exact path moves changes into production?", owner: primary maintainer, priority: P1}
+  - {question: "What actions are blocked versus allowed after a human approval, and what credentials do agents use?", owner: primary maintainer, priority: P1}
+  - {question: "Where do requests arrive, and what are the most common repeated request types?", owner: primary maintainer, priority: P2}
+  - {question: "What review requirements, decision records, runbooks, and incident knowledge should the brain link to?", owner: primary maintainer, priority: P2}
+  - {question: "Which tools have read-only connectors, and which data categories are regulated or sensitive?", owner: primary maintainer, priority: P2}
+  - {question: "Should other teams adopt Wingman, and where should a human-readable copy live?", owner: primary maintainer, priority: P3}
