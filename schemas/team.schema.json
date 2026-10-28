@@ -519,13 +519,22 @@
           }
         },
         "brain_changes_via": {
-          "const": "pull_request"
+          "enum": [
+            "pull_request",
+            null
+          ]
         },
         "automation_may_merge": {
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "practice_review": {
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "required": [
             "light",
             "deep"
