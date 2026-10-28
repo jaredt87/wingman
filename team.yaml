@@ -51,6 +51,7 @@ guardrails:
     - "Destructive Git operations, publishing, merging, or releasing."
     - "Writing to external systems or handling sensitive data."
   agent_credentials: unknown
+  agent_can_merge_or_edit_workflows: unknown
   sensitive_data: [secrets, customer-sensitive data]
   production_approval: "Unknown; confirm the approving role and system."
   gates_never_bypassed: [repository review, CI checks, policy and confirmation gates]
@@ -58,6 +59,7 @@ freshness:
   auto_refresh: []
   brain_changes_via: pull_request
   practice_review: {light: monthly, deep: quarterly}
+  pin_plugins_and_skills: null
 rollout:
   load_via: [pointer_files]
   pilot: {who: [primary maintainer], duration_days: 14}
