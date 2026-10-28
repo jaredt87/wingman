@@ -140,11 +140,17 @@
         "type": "object",
         "required": [
           "tool",
+          "control",
           "workspaces_or_scope"
         ],
         "properties": {
           "tool": {
             "type": "string"
+          },
+          "control": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The specific approval, policy, CI check, or other enforcing control that must be satisfied before applying changes."
           },
           "workspaces_or_scope": {
             "type": "array",
