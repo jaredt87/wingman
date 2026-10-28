@@ -114,6 +114,9 @@
                   "recommend",
                   "act"
                 ]
+              },
+              "promotion": {
+                "$ref": "#/$defs/requestTypePromotionOverrides"
               }
             },
             "additionalProperties": false
@@ -203,6 +206,28 @@
         "path": {
           "type": "string",
           "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "requestTypePromotionOverrides": {
+      "type": "object",
+      "description": "Optional per-request-type overrides. Omitted metrics inherit promotion.recommend_when defaults.",
+      "properties": {
+        "min_requests": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "min_match_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "max_confident_misses_in_last_20": {
+          "type": "integer",
+          "minimum": 0
         }
       },
       "additionalProperties": false
