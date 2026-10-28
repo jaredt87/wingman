@@ -17,7 +17,7 @@ You are helping set up a **team brain**: a versioned repository of shared instru
 - Everything produced is a draft for human review.
 - A descriptive `team.yaml` and operational `brain.config.yaml` are separate schemas. Do not mix runtime routing/authorization into descriptive metadata.
 - The runtime config may add team guards to the pinned core only; it must never weaken or remove core guards.
-- Default all request types to `shadow` mode. Do not promote a request type without measured evidence and a reviewed PR.
+- Give each request type its own `mode` (`shadow`, `recommend`, or `act`), defaulting to `shadow`. Do not promote a request type without measured evidence and a reviewed PR. Do not use a channel-wide mode to promote all request types together.
 - Instructions are not a security boundary. Identify the actual enforcing control (credential scope, policy, hook, CI, or approval gate) and state `instruction only` when nothing else enforces a rule.
 - Any rule phrased as “never” that is enforced only by instructions, or lacks a proving test, is a P1 open question.
 - Schema validation proves structure, not that identifiers or policies are real. Mark those values for semantic verification against authoritative sources.
@@ -57,7 +57,7 @@ Documentation locations and freshness; runbooks and incident history; important 
 What the agent must never do; what requires human approval rather than a hard block; session credential scope and read-only roles; whether credentials can merge/approve/edit workflow files; regulated/sensitive data handling; production approvers and apply gates for IaC/config management/deploy tools; safety gates that must never be bypassed. The real boundary is the credential and technical control, not the instruction.
 
 ### 8 — Keeping it current
-Facts that go stale and possible read-only refresh sources; PR review/ownership for brain changes; whether automation may merge (default no); light monthly and deeper quarterly review cadence; incident learning process; pinning plugins/skills and updating only through reviewed PRs.
+Facts that go stale and possible read-only refresh sources; PR review/ownership for brain changes; whether automation may merge; light monthly and deeper quarterly review cadence; incident learning process; pinning plugins/skills and updating only through reviewed PRs. If skipped or unanswered, use `null` and add an open question rather than asserting a policy.
 
 ### 9 — Distribution and rollout
 How users load the brain; pilot roles, work type, and duration; future multi-team adoption and shared-core version pinning; canonical human-readable location and whether any copy is generated.
@@ -125,14 +125,14 @@ guardrails:
   agent_can_merge_or_edit_workflows: unknown
   sensitive_data: []
   production_approval: null
-  apply_gates: []
+  apply_gates: null
   gates_never_bypassed: []
 freshness:
   auto_refresh: []
   brain_changes_via: null
   automation_may_merge: null
   practice_review: null
-  pin_plugins_and_skills: true
+  pin_plugins_and_skills: null
 rollout:
   load_via: []
   pilot: {who: [], duration_days: null}
@@ -151,11 +151,14 @@ modules: {}
 channel:
   id: <request-channel-id>
   owner_consent: unknown
-  mode: shadow
   free_text_policy: redirect_to_form
 identity:
   verification: unknown
-  request_types: {}
+  request_types:
+    <request-type>:
+      allowed: []
+      second_approver: false
+      mode: shadow
 apply_gates: []
 guards:
   add: []
