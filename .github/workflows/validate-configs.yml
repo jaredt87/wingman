@@ -3,7 +3,7 @@ name: Validate team brain configuration
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, "feat/**"]
 
 permissions:
   contents: read
