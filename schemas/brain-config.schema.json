@@ -116,7 +116,14 @@
                 ]
               },
               "promotion": {
-                "$ref": "#/$defs/requestTypePromotionOverrides"
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/requestTypePromotionOverrides"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               }
             },
             "additionalProperties": false
