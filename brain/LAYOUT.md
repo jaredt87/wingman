@@ -17,7 +17,7 @@ brain/
   runbooks/README.md              # Add runbooks only when owners/sources are known
   SETUP.md                        # Two-week pilot and approval needs
   LAYOUT.md                       # This map
-skills/                           # Three candidate reusable workflows
+skills/                           # Reusable workflows; see skills/README.md
 tooling/install-pointers.sh       # Idempotent sibling-repo pointer installer
 ```
 
