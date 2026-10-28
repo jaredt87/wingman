@@ -48,7 +48,7 @@ Request intake paths; definition of done; review and approval norms; branching/r
 ### 5 — Request channel and authorization (required if requests arrive through chat)
 Whether a request channel exists and whether it is dedicated or catch-all; form/template and free-text handling; explicit channel-owner consent to reading history and new messages, plus whether private/sensitive content is present; request types mapped to authorized groups/roles using placeholders; whether requester identity is verifiable (prefer SSO, never assume a chat handle proves identity); request types needing a second approver; shadow-mode metrics and promotion criteria. No consent means no channel reading.
 
-Suggested initial promotion bar: at least 30 real requests of that type, at least 90% routing match, and zero confidently wrong routing decisions in the latest 20. Classification (“is this a request?”) must be scored separately from response quality.
+Suggested initial promotion bar: at least 30 real requests of that type, at least 90% routing match, and zero confidently wrong routing decisions in the latest 20. Classification (“is this a request?”) must be scored separately from response quality. These are global defaults; allow justified per-request-type overrides when risk differs, and evaluate each type independently.
 
 ### 6 — Knowledge sources
 Documentation locations and freshness; runbooks and incident history; important channels and purpose; sources available read-only through connectors; repeated explanations that should become short memory entries.
@@ -116,8 +116,8 @@ flow:
 knowledge:
   docs: null
   runbooks: null
-  channels: []
-  read_only_connectors: []
+  channels: null
+  read_only_connectors: null
 guardrails:
   never: []
   ask_first: []
@@ -128,14 +128,14 @@ guardrails:
   apply_gates: null
   gates_never_bypassed: []
 freshness:
-  auto_refresh: []
+  auto_refresh: null
   brain_changes_via: null
   automation_may_merge: null
   practice_review: null
   pin_plugins_and_skills: null
 rollout:
-  load_via: []
-  pilot: {who: [], duration_days: null}
+  load_via: null
+  pilot: {who: null, duration_days: null}
   multi_team: null
 open_questions:
   - {question: "<text>", owner: <role>, priority: P1}
@@ -159,6 +159,8 @@ identity:
       allowed: []
       second_approver: null
       mode: shadow
+      # Optional overrides; omitted metrics inherit promotion.recommend_when defaults.
+      promotion: null
 apply_gates: null
 guards:
   add: []
