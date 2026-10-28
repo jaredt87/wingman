@@ -1,0 +1,22 @@
+team: wingman-example
+extends:
+  core: <pinned-core-version>
+modules: {}
+channel:
+  id: <request-channel-id>
+  owner_consent: unknown
+  mode: shadow
+  free_text_policy: redirect_to_form
+identity:
+  verification: unknown
+  request_types: {}
+apply_gates: []
+guards:
+  add: []
+promotion:
+  recommend_when:
+    min_requests: 30
+    min_match_rate: 0.90
+    max_confident_misses_in_last_20: 0
+overlay:
+  path: teams/wingman-example/
