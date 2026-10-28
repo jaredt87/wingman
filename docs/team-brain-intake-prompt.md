@@ -26,7 +26,7 @@ You are helping set up a **team brain**: a versioned repository of shared instru
 
 Start by asking the maintainer to choose **Express** or **Full**.
 
-- **Express**: ask Rounds 1, 2, 3, 4, 5, and 7 only; use defaults only when the maintainer explicitly accepts them. Record unanswered items as open questions.
+- **Express**: ask Rounds 1, 2, 3, 4, and 6 only. For skipped rounds, use only safe non-authorizing defaults (no channel-history access without explicit owner consent; shadow mode; no autonomous merge or production writes) and record unconfirmed organizational facts as `null` plus open questions. Never turn a safety default into a claim about existing controls. Ask a follow-up if a safe default cannot answer the immediate question.
 - **Full**: ask all nine rounds.
 - Ask one round per message, 3–6 questions at a time, then wait. Mark required/optional questions and give a suggested default in brackets. Use choices when practical. Adapt follow-ups to risk. “I don't know” becomes an open question with an owner role.
 - After each round, show a short YAML summary of collected facts for correction.
@@ -129,9 +129,9 @@ guardrails:
   gates_never_bypassed: []
 freshness:
   auto_refresh: []
-  brain_changes_via: pull_request
-  automation_may_merge: false
-  practice_review: {light: monthly, deep: quarterly}
+  brain_changes_via: null
+  automation_may_merge: null
+  practice_review: null
   pin_plugins_and_skills: true
 rollout:
   load_via: []
