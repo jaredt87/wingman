@@ -9,7 +9,7 @@ channel:
 identity:
   verification: unknown
   request_types: {}
-apply_gates: []
+apply_gates: null
 guards:
   add: []
 promotion:
