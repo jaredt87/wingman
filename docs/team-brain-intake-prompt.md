@@ -26,7 +26,7 @@ You are helping set up a **team brain**: a versioned repository of shared instru
 
 Start by asking the maintainer to choose **Express** or **Full**.
 
-- **Express**: ask Rounds 1, 2, 3, 4, and 6 only. For skipped rounds, use only safe non-authorizing defaults (no channel-history access without explicit owner consent; shadow mode; no autonomous merge or production writes) and record unconfirmed organizational facts as `null` plus open questions. Never turn a safety default into a claim about existing controls. Ask a follow-up if a safe default cannot answer the immediate question.
+- **Express**: ask Rounds 1, 2, 3, 4, and 7. If Round 4 identifies requests arriving through chat, also ask Round 5; otherwise skip Round 5. Skip Rounds 6, 8, and 9. For skipped rounds, use only safe non-authorizing defaults (no channel-history access without explicit owner consent; shadow mode; no autonomous merge or production writes) and record unconfirmed organizational facts as `null` plus open questions. Never turn a safety default into a claim about existing controls. Ask a follow-up if a safe default cannot answer the immediate question.
 - **Full**: ask all nine rounds.
 - Ask one round per message, 3–6 questions at a time, then wait. Mark required/optional questions and give a suggested default in brackets. Use choices when practical. Adapt follow-ups to risk. “I don't know” becomes an open question with an owner role.
 - After each round, show a short YAML summary of collected facts for correction.
@@ -157,7 +157,7 @@ identity:
   request_types:
     <request-type>:
       allowed: []
-      second_approver: false
+      second_approver: null
       mode: shadow
 apply_gates: null
 guards:
