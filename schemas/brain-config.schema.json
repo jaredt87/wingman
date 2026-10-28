@@ -119,7 +119,10 @@
       }
     },
     "apply_gates": {
-      "type": "array",
+      "type": [
+        "array",
+        "null"
+      ],
       "items": {
         "type": "object",
         "required": [
