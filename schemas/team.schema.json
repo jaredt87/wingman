@@ -518,10 +518,11 @@
           }
         },
         "brain_changes_via": {
-          "enum": [
-            "pull_request",
-            null
-          ]
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
         },
         "automation_may_merge": {
           "type": [
@@ -606,6 +607,36 @@
             "null"
           ]
         }
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "description": "Optional source and verification metadata for mutable team facts.",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "source",
+          "verified_at"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "description": "YAML path to the fact or group of facts being documented."
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Authoritative source where the fact was confirmed."
+          },
+          "verified_at": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Date or timestamp when the fact was last verified."
+          }
+        },
+        "additionalProperties": false
       }
     },
     "open_questions": {
