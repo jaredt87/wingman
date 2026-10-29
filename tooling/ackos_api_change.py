@@ -14,7 +14,7 @@ import os
 from pathlib import PurePosixPath
 import sys
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlsplit, urlunsplit
+from urllib.parse import urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 
@@ -130,12 +130,17 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ackos-api change failed: {exc}", file=sys.stderr)
         return 1
 
-    # Deliberately omit response bodies and token fields from output.
-    commit = result.get("commit_id") or result.get("commit_sha")
-    if isinstance(commit, str) and commit:
-        print(f"ackos-api change completed; ackOS reported success (commit {commit}).")
+    # HTTP 200 alone is not proof of a successful ackOS transition.
+    if result.get("verified") is not True or result.get("committed") is not True:
+        print("ackos-api change failed: response did not confirm ackOS verification and commitment.", file=sys.stderr)
+        return 1
+
+    # Deliberately omit response bodies and observation-token fields from output.
+    execution_id = result.get("execution_id")
+    if isinstance(execution_id, str) and execution_id:
+        print(f"ackos-api change completed; ackOS verified and committed (execution {execution_id}).")
     else:
-        print("ackos-api change completed; ackOS reported success.")
+        print("ackos-api change completed; ackOS verified and committed.")
     return 0
 
 
