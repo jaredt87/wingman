@@ -9,12 +9,12 @@ Use this skill when the task requires a state-changing operation to pass through
 
 ## Hard boundary
 
-1. Confirm that the user’s requested change, target resource, scope, and prohibited actions are explicit.
-2. Read the target system’s instructions and security guidance. For repository-backed operations, inspect the current branch/head and relevant file before proposing the mutation.
-3. Require an actual callable `ackos_control` MCP tool connected to a provider-backed ackOS server that owns the executor and independent verifier.
-4. Do not treat a skill, a model decision, a GitHub connector, or the synthetic `cmd/ackos-mcp` demo as proof of provider-backed execution.
-5. Never perform the protected mutation directly through ordinary file editing, Git commands, GitHub Contents/Write APIs, or another side-effecting tool as a fallback around ackOS.
-6. If the real tool/server or its supported input-building/observation path is unavailable, stop before the mutation and report the exact missing integration. Do not invent resource IDs, observations, fingerprints, concurrency tokens, or desired-state encodings.
+1. Confirm that the user's requested change, target resource, scope, and prohibited actions are explicit.
+2. Read the target system's instructions and security guidance. For repository-backed operations, inspect the current branch/head and relevant file before proposing the mutation.
+3. **Require an actual callable `ackos_control` MCP tool connected to a real, configured, provider-backed ackOS server** that owns authorization, execution, independent verification, recovery, and commitment. This is a mandatory execution gate for every protected mutation.
+4. Do not treat an HTTP endpoint, standalone HTTP client, this skill, a model decision, a GitHub connector, or the synthetic `cmd/ackos-mcp` demo as proof that the required integration is present.
+5. Never perform the protected mutation directly through ordinary file editing, Git commands, GitHub Contents/Write APIs, direct HTTP calls to ackos-api, or another side-effecting tool as a fallback around ackOS.
+6. If the real callable tool/server or its supported input-building/observation path is unavailable, stop before the mutation and report the exact missing integration. Do not invent resource IDs, observations, fingerprints, concurrency tokens, or desired-state encodings.
 7. Do not push, merge, release, or change production/infrastructure state without the specific human authorization required by the target system and task.
 
 ## Prepare the transition
@@ -32,12 +32,16 @@ Use provider-owned helpers or a documented observation interface to construct th
 
 ## Execute and verify
 
-1. Submit the smallest in-scope transition through `ackos_control` only.
+1. Submit the smallest in-scope transition through the callable `ackos_control` integration only.
 2. Treat a denied, stale, failed, timed-out, cancelled, or ambiguous result as **not successful**.
 3. Do not retry with stale values. Obtain a fresh provider observation and re-evaluate authorization before a new attempt.
 4. Require ackOS to report successful independent verification and commitment.
 5. Independently inspect the resulting provider state when a read path is available. For Git, confirm the expected branch/ref, resulting commit, exact target content, and absence of unrelated changes.
 6. If verification or execution fails, follow the existing ackOS recovery lifecycle. Do not invent a successful state or perform direct compensating writes.
+
+## HTTP integration status
+
+`ackos-api` exposes an HTTP contract, but Wingman must not call that endpoint directly for protected mutations under the current repository policy. The callable, provider-backed `ackos_control` integration must remain the execution gate. The precise missing capability is a supported `ackos_control` runtime/transport implementation that invokes the HTTP API while preserving the tool's authorization and input-building boundary. Until that is available and configured, stop before mutation; documentation or a standalone HTTP client is not a substitute.
 
 ## Terraform and infrastructure safety
 
