@@ -64,7 +64,9 @@
           "enum": [
             "redirect_to_form",
             "read_only",
-            "none"
+            "none",
+            "unknown",
+            null
           ]
         }
       }
