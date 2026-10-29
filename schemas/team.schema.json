@@ -288,12 +288,11 @@
           }
         },
         "done_means": {
-          "enum": [
-            "merged",
-            "deployed",
-            "verified",
-            null
-          ]
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
         },
         "review": {
           "type": "object",
