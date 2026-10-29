@@ -11,11 +11,11 @@ Use this skill when the task requires a state-changing operation to pass through
 
 1. Confirm that the user's requested change, target resource, scope, and prohibited actions are explicit.
 2. Read the target system's instructions and security guidance. For repository-backed operations, inspect the current branch/head and relevant file before proposing the mutation.
-3. For file replacements through ackos-api, use Wingman's `tooling/ackos_api_change.py` client. It performs the documented HTTP sequence: `POST /v1/observations`, then `POST /v1/changes` with the opaque token returned by the first request.
-4. Require the API base URL, bearer credential, and repository identifier to be configured out-of-band in the runtime environment. Use `ACKOS_API_BASE_URL`, `ACKOS_API_BEARER_TOKEN`, and `ACKOS_API_REPOSITORY_ID`; never put credentials in files, arguments, logs, or chat. The repository identifier must be one configured on the API server; never substitute an arbitrary filesystem path.
-5. Do not treat this skill, the HTTP client, a GitHub connector, or the synthetic `cmd/ackos-mcp` demo as execution authority. The authenticated API must be connected to the provider-backed ackOS runtime.
-6. Never perform the protected mutation directly through ordinary file editing, Git commands, GitHub Contents/Write APIs, or Terraform as a fallback around ackOS.
-7. If the API service, credentials, repository mapping, or supported request path is unavailable, stop before the mutation and report the exact missing integration. Do not invent resource IDs, observations, fingerprints, concurrency tokens, or desired-state encodings.
+3. **Require an actual callable `ackos_control` MCP tool connected to a real, configured, provider-backed ackOS server** that owns authorization, execution, independent verification, recovery, and commitment. This is a mandatory execution gate for every protected mutation.
+4. The HTTP client in this repository is not a substitute for that integration and must not be invoked directly to perform a protected mutation. It may be used only as an internal transport by an already configured `ackos_control` integration, if that integration explicitly supports and authorizes this transport. The fact that ackos-api delegates to ackOS does not itself satisfy the callable-tool gate.
+5. If the callable tool, provider-backed server, supported input-building/observation path, or configured transport is unavailable, stop before the mutation and report the exact missing integration. Do not invent resource IDs, observations, fingerprints, concurrency tokens, or desired-state encodings.
+6. Do not treat this skill, the HTTP client, a GitHub connector, or the synthetic `cmd/ackos-mcp` demo as execution authority.
+7. Never perform the protected mutation directly through ordinary file editing, Git commands, GitHub Contents/Write APIs, a direct invocation of `tooling/ackos_api_change.py`, or Terraform as a fallback around ackOS.
 8. Do not push, merge, release, or change production/infrastructure state without the specific human authorization required by the target system and task.
 
 ## Prepare the transition
