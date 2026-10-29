@@ -16,7 +16,7 @@ The linked skill is authoritative for this workflow. Do not copy it into this di
 
 ## Intended architecture
 
-`Wingman coordinator → host MCP runtime → ackOS `cmd/ackos-mcp-api` (stdio) → authenticated ackos-api → ackOS kernel/provider → allowlisted repository checkout`
+`Wingman coordinator → host MCP runtime → ackOS adapter (cmd/ackos-mcp-api, stdio) → authenticated ackos-api → ackOS kernel/provider → allowlisted repository checkout`
 
 The production adapter is already implemented in ackOS. Do not recreate it or use the synthetic `cmd/ackos-mcp` demo as execution authority. ackos-api/ackOS own authorization, execution, independent verification, recovery, and commitment; this workspace is only the client-side context.
 
