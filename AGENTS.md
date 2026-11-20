@@ -45,3 +45,12 @@ contains a Wingman pointer.
 - Point to existing repository documentation instead of copying it here.
 - Route changes to this brain through a pull request when practical; record
   unresolved questions with an owner role and priority.
+
+
+## Open-source use and licensing
+
+- Wingman is licensed under Apache License 2.0. Review the repository's `LICENSE`; this guidance does not modify the license.
+- Before adopting Wingman in another organization, inspect and customize `team.yaml`, `brain/`, and any other context files. Do not assume the example context accurately describes your organization.
+- Treat all context and instructions as guidance, not technical enforcement. Configure actual credential permissions, repository protections, CI, and approval gates in the systems that enforce them.
+- Keep contributions generalizable and free of secrets, customer-sensitive data, and private organizational context. Prefer links/pointers to authoritative sources rather than embedding sensitive material.
+- Follow the target repository's own license, instructions, security policies, and contribution/review rules. This file does not override them.
