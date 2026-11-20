@@ -19,6 +19,7 @@ and proposes human approval for consequential changes. See
 
 ## Maintenance
 
-Update shared guidance through a reviewed change to this repository. Keep
-unknown policies in [brain/questions.md](brain/questions.md), and remove them
-only when confirmed. Review lightly each month and more deeply each quarter.
+The proposed maintenance process is to update shared guidance through a reviewed
+change and review it lightly each month and more deeply each quarter. These
+practices are not yet confirmed policy; see [brain/questions.md](brain/questions.md)
+and confirm the process and cadence before treating them as requirements.

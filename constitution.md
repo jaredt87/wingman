@@ -11,4 +11,4 @@ or stop a command.
 | Get action-specific human approval before production, destructive, IAM, migration, or cloud-write actions. | Cloud credentials and deployment gates should enforce this; actual controls are an open question. Until confirmed, instruction only. |
 | Never bypass review, CI, policy, or confirmation gates. | CI/repository protections where configured; instruction only otherwise. |
 | Verify the change using the repository's documented checks and report the evidence. | CI where configured; instruction only for local verification/reporting. |
-| Keep the shared brain short, sourced, and reviewable; point to local sources rather than copy them. | Pull request review and monthly maintenance; otherwise instruction only. |
+| Keep the shared brain short, sourced, and reviewable; point to local sources rather than copy them. | Review process and maintenance cadence are unconfirmed; instruction only until approved. |

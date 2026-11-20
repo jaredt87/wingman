@@ -51,13 +51,17 @@ guardrails:
     - "Destructive Git operations, publishing, merging, or releasing."
     - "Writing to external systems or handling sensitive data."
   agent_credentials: unknown
+  agent_can_merge_or_edit_workflows: unknown
   sensitive_data: [secrets, customer-sensitive data]
   production_approval: "Unknown; confirm the approving role and system."
+  apply_gates: null
   gates_never_bypassed: [repository review, CI checks, policy and confirmation gates]
 freshness:
   auto_refresh: []
-  brain_changes_via: pull_request
-  practice_review: {light: monthly, deep: quarterly}
+  brain_changes_via: null
+  automation_may_merge: null
+  practice_review: null
+  pin_plugins_and_skills: null
 rollout:
   load_via: [pointer_files]
   pilot: {who: [primary maintainer], duration_days: 14}
@@ -69,4 +73,6 @@ open_questions:
   - {question: "Where do requests arrive, and what are the most common repeated request types?", owner: primary maintainer, priority: P2}
   - {question: "What review requirements, decision records, runbooks, and incident knowledge should the brain link to?", owner: primary maintainer, priority: P2}
   - {question: "Which tools have read-only connectors, and which data categories are regulated or sensitive?", owner: primary maintainer, priority: P2}
+  - {question: "What apply gates protect Terraform and other production-affecting tools?", owner: primary maintainer, priority: P1}
+  - {question: "Who owns brain changes, may automation merge, and what freshness-review cadence is approved?", owner: primary maintainer, priority: P2}
   - {question: "Should other teams adopt Wingman, and where should a human-readable copy live?", owner: primary maintainer, priority: P3}
