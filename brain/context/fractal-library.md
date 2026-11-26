@@ -46,13 +46,17 @@ The initial search is case-insensitive substring matching. It is not semantic re
 
 The default example store path `.state/library` is local data and is ignored by Git. Do not commit private or user-specific library contents. Use an explicit store root and follow the target Fractal repository's instructions.
 
+## Integration dependency
+
+The Fractal Core knowledge-record schema, store, and CLI are being introduced in [Fractal Core PR #39](https://github.com/jaredt87/fractal-agentic-ecosystem/pull/39). Merge that foundation before treating the CLI workflow as available on the default branch. The source links below use the implementation branch until the change lands.
+
 ## Source-of-truth pointers
 
 Prefer links to current repository files over copying them into Wingman:
-- Fractal architecture thesis: https://github.com/jaredt87/fractal-agentic-ecosystem/blob/main/docs/architecture-thesis.md
+- Fractal architecture thesis: https://github.com/jaredt87/fractal-agentic-ecosystem/blob/architecture/library-model-foundation/docs/architecture-thesis.md
 - Knowledge record model: https://github.com/jaredt87/fractal-agentic-ecosystem/blob/main/docs/knowledge-record-model-v1alpha1.md
 - Knowledge record store: https://github.com/jaredt87/fractal-agentic-ecosystem/blob/main/docs/knowledge-record-store.md
 - Knowledge CLI: https://github.com/jaredt87/fractal-agentic-ecosystem/blob/main/docs/knowledge-library-cli.md
-- Shared ecosystem context: https://github.com/jaredt87/fractal-agentic-ecosystem/blob/main/AGENT_CONTEXT.md
+- Shared ecosystem context: https://github.com/jaredt87/fractal-agentic-ecosystem/blob/architecture/library-model-foundation/AGENT_CONTEXT.md
 
 This context is a pointer and operating guide, not proof that the referenced implementation is available in every local workspace. Check the target branch and repository state before relying on it.
