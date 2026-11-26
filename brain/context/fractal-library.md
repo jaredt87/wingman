@@ -40,9 +40,9 @@ The first Fractal knowledge increment includes:
 - `EvidenceRecord`: a source-backed claim about a subject, with capture time and optional digest/freshness boundary. Assessments are attributed opinions, not cryptographic verification.
 - `KnowledgeRelationship`: a typed link between records, optionally citing evidence records.
 - `RecordStore`: explicit-root, local, append-only JSON persistence; identical writes are idempotent, different content under an existing ID is rejected.
-- CLI: `validate`, `put`, `get`, `list`, `search`, `evidence`, and `relationships`.
+- CLI: `validate`, `put`, `get`, `list`, `search`, `evidence`, `relationships`, and `check`.
 
-The initial search is case-insensitive substring matching. It is not semantic retrieval. The store does not resolve cross-record references, fetch sources, verify provenance, authenticate identities, replicate, or authorize actions.
+The initial search is case-insensitive substring matching. It is not semantic retrieval. The explicit `check` command reports dangling subject, relationship endpoint, and evidence references, but does not establish that evidence supports a claim. The store does not fetch sources, verify provenance, authenticate identities, replicate, or authorize actions.
 
 The default example store path `.state/library` is local data and is ignored by Git. Do not commit private or user-specific library contents. Use an explicit store root and follow the target Fractal repository's instructions.
 
