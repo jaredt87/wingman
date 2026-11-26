@@ -42,7 +42,7 @@ The first Fractal knowledge increment includes:
 - `RecordStore`: explicit-root, local, append-only JSON persistence; identical writes are idempotent, different content under an existing ID is rejected.
 - CLI: `validate`, `put`, `get`, `list`, `search`, `evidence`, `relationships`, and `check`.
 
-The initial search is case-insensitive substring matching. It is not semantic retrieval. The explicit `check` command reports dangling subject, relationship endpoint, and evidence references, but does not establish that evidence supports a claim. The store does not fetch sources, verify provenance, authenticate identities, replicate, or authorize actions.
+The source-linked starter collection is in `examples/knowledge/seed/` in Fractal Core; its assessments are intentionally unassessed. The initial search is case-insensitive substring matching. It is not semantic retrieval. The explicit `check` command reports dangling subject, relationship endpoint, and evidence references, but does not establish that evidence supports a claim. The store does not fetch sources, verify provenance, authenticate identities, replicate, or authorize actions.
 
 The default example store path `.state/library` is local data and is ignored by Git. Do not commit private or user-specific library contents. Use an explicit store root and follow the target Fractal repository's instructions.
 
