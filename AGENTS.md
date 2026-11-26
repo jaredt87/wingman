@@ -82,3 +82,17 @@ Consult the other repositories' agent instructions when a task crosses repositor
 - Verify each affected repository using its own documented checks and report incomplete work, assumptions, and dependencies accurately.
 
 This routing section is an ecosystem navigation and coordination layer. It does not override repository-specific architecture, security, development, or agent instructions. If instructions conflict, stop and resolve the conflict.
+
+
+## Fractal library routing
+
+Fractal is the ecosystem's knowledge library; Wingman is the experienced librarian and institutional-memory interface over it. Use this relationship for knowledge retrieval, synthesis, source tracing, and proposal preparation—not as an authority chain.
+
+- Fractal Core: https://github.com/jaredt87/fractal-agentic-ecosystem — canonical knowledge-record contracts and local record store.
+- Hub Catalog: https://github.com/jaredt87/fractal-hub-catalog — curated capability and blueprint collection.
+- Reference Assistant: https://github.com/jaredt87/fractal-assistant — example agent-facing workflow and non-executable policy preview.
+- Wingman: this repository — context, retrieval guidance, curation, synthesis, and workflows.
+
+For Fractal-library work, read `skills/fractal-library/SKILL.md` and `brain/context/fractal-library.md`. The Fractal CLI requires an explicit local store root; its initial search is substring-based, not semantic. If the local store is absent or empty, inspect the source repositories directly and do not claim that the library is complete.
+
+Fractal and Wingman do not grant operational authority. For mutations designated to run through ackOS, the existing `skills/ackos-control/SKILL.md` remains mandatory. Do not replace, bypass, or duplicate ackOS authorization, execution, verification, recovery, or commitment.

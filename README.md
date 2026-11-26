@@ -10,7 +10,8 @@ Wingman is a shared-context repository intended to help AI agents and developers
 2. Read `AGENTS.md`, `team.yaml`, and `constitution.md`.
 3. Review the relevant files under `brain/context/` for the work you're doing, and treat `brain/questions.md` as unresolved context rather than established facts.
 4. Follow the target repository's own `AGENTS.md`, security policy, documentation, and CI requirements. Local repository guidance remains authoritative for that repository.
-5. For changes that must be governed by ackOS, follow `skills/ackos-control/SKILL.md`. It requires a real, callable, provider-backed ackOS integration; instructions alone do not enforce authorization.
+5. For Fractal knowledge retrieval and curation, follow `skills/fractal-library/SKILL.md`. Fractal is the library; Wingman is the librarian. This workflow does not grant authority.
+6. For changes that must be governed by ackOS, follow `skills/ackos-control/SKILL.md`. It requires a real, callable, provider-backed ackOS integration; instructions alone do not enforce authorization.
 
 ## Repository structure
 
@@ -18,7 +19,8 @@ Wingman is a shared-context repository intended to help AI agents and developers
 - `team.yaml` — working context and configuration (review and customize before adopting).
 - `constitution.md` — shared principles and guardrails.
 - `brain/` — contextual knowledge, pointers, and unresolved questions.
-- `skills/` — task-specific workflows.
+- `skills/` — task-specific workflows, including `fractal-library/` for knowledge retrieval and `ackos-control/` for governed mutations.
+- `brain/context/fractal-library.md` — pointers and operating context for Fractal Core, Hub Catalog, and the reference Assistant.
 
 Contents are intentionally lightweight and should point to authoritative sources instead of duplicating them. Review contextual files for privacy, accuracy, and applicability before using them in another organization.
 
