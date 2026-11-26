@@ -34,6 +34,7 @@ python -m knowledge_layer.cli --store-root .state/library search "search terms"
 python -m knowledge_layer.cli --store-root .state/library get <record-id>
 python -m knowledge_layer.cli --store-root .state/library evidence <subject-id>
 python -m knowledge_layer.cli --store-root .state/library relationships <record-id>
+python -m knowledge_layer.cli --store-root .state/library check
 ```
 
 The current search is case-insensitive substring matching, not semantic search. Use it as a first retrieval pass, then inspect linked records and authoritative repository files. Do not claim exhaustive retrieval from a substring search.
@@ -61,7 +62,7 @@ python -m knowledge_layer.cli --store-root .state/library validate /path/to/reco
 python -m knowledge_layer.cli --store-root .state/library put /path/to/record.json
 ```
 
-7. Store related records individually. The initial validator does not resolve cross-record references, so verify referenced IDs by reading them before adding relationships.
+7. Store related records individually. The record validator checks one record at a time. Use the read-only `check` command after a batch to find dangling references, and verify each referenced record before treating a relationship as meaningful.
 8. Never overwrite an existing record ID. For a revision, create a new ID and add a `supersedes` relationship.
 
 The store is local, append-only JSON with basic retrieval. It is not a distributed database, semantic search service, provenance verifier, identity system, or authorization service. Its `.state/library` contents are local data and should not be committed unless the target repository explicitly calls for a curated, non-sensitive fixture.
