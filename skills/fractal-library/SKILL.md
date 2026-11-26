@@ -22,7 +22,7 @@ Wingman is the experienced librarian. Fractal Core is the underlying knowledge a
 1. Identify the Fractal Core checkout and inspect its local `AGENTS.md` and `AGENT_CONTEXT.md`.
 2. Confirm that the checkout includes `knowledge_layer/cli.py` and the versioned knowledge-record schema.
 3. Identify the intended local store root. The Fractal CLI requires `--store-root`; the conventional development location is `.state/library` relative to the Fractal checkout. Do not silently choose a different root.
-4. If the store does not exist or is empty, say so and retrieve directly from the source repositories. An empty local store does not mean the ecosystem contains no relevant knowledge.
+4. If the store does not exist or is empty, optionally load the checked-in source-linked starter collection from `examples/knowledge/seed/` after confirming that the user wants that local seed data. Then inspect the source repositories directly. An empty local store does not mean the ecosystem contains no relevant knowledge.
 
 ## Read and retrieve
 
