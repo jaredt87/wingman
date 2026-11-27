@@ -76,6 +76,14 @@ When research suggests a change:
 - Do not turn the proposal into a command or infer permission from its presence in the library.
 - Route any protected state change through the applicable external governance and execution-control system.
 
+## Acceptance testing
+
+For a repeatable operator-run check of the end-to-end librarian workflow, use
+[the Fractal Librarian Acceptance Scenario](../../docs/fractal-librarian-acceptance.md).
+It verifies retrieval, linked evidence and relationships, direct source inspection,
+uncertainty reporting, and authority boundaries. It is not an automated LLM
+benchmark; report blocked or untested steps honestly.
+
 ## Report honestly
 
 State which records and source files were consulted, what evidence was found, what could not be checked, and whether the answer is a source fact, an attributed assessment, or a synthesis. Do not claim the librarian has complete institutional knowledge.
