@@ -1,0 +1,672 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wingman.invalid/schemas/team.schema.json",
+  "title": "Wingman team metadata",
+  "type": "object",
+  "required": [
+    "team",
+    "people",
+    "tools",
+    "work",
+    "flow",
+    "knowledge",
+    "guardrails",
+    "freshness",
+    "rollout",
+    "open_questions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "team": {
+      "type": "object",
+      "required": [
+        "name",
+        "type",
+        "purpose",
+        "success_90d",
+        "anti_goals"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "purpose": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "success_90d": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "anti_goals": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "people": {
+      "type": "object",
+      "required": [
+        "size",
+        "roles",
+        "time_zones",
+        "on_call",
+        "brain_maintainers"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "size": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "roles": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "time_zones": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "on_call": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "brain_maintainers": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tools": {
+      "type": "object",
+      "required": [
+        "agents",
+        "agent_autonomy",
+        "platforms"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "agents": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "agent_autonomy": {
+          "enum": [
+            "suggest",
+            "read_only",
+            "run_with_approval",
+            "autonomous_in_dev",
+            null
+          ]
+        },
+        "platforms": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "work": {
+      "type": "object",
+      "required": [
+        "repos",
+        "stack",
+        "environments",
+        "ci",
+        "path_to_production"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "repos": {
+          "type": "object",
+          "required": [
+            "daily",
+            "weekly",
+            "rarely"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "daily": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "own_governance"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "own_governance": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "weekly": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "own_governance"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "own_governance": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "rarely": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "stack": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "environments": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "ci": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "path_to_production": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "flow": {
+      "type": "object",
+      "required": [
+        "intake",
+        "done_means",
+        "review",
+        "decisions_recorded_in",
+        "top_request_types"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "intake": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "done_means": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "review": {
+          "type": "object",
+          "required": [
+            "approvals",
+            "required_reviewers"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "approvals": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "required_reviewers": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "decisions_recorded_in": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "top_request_types": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "knowledge": {
+      "type": "object",
+      "required": [
+        "docs",
+        "runbooks",
+        "channels",
+        "read_only_connectors"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "docs": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "runbooks": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "channels": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "purpose": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "purpose"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "read_only_connectors": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "guardrails": {
+      "type": "object",
+      "required": [
+        "never",
+        "ask_first",
+        "agent_credentials",
+        "agent_can_merge_or_edit_workflows",
+        "sensitive_data",
+        "production_approval",
+        "apply_gates",
+        "gates_never_bypassed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "never": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "ask_first": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "agent_credentials": {
+          "enum": [
+            "read_only",
+            "scoped_write",
+            "unknown",
+            null
+          ]
+        },
+        "agent_can_merge_or_edit_workflows": {
+          "enum": [
+            true,
+            false,
+            "unknown",
+            null
+          ]
+        },
+        "sensitive_data": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "production_approval": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "apply_gates": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "tool",
+              "gate"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string"
+              },
+              "gate": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "gates_never_bypassed": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "freshness": {
+      "type": "object",
+      "required": [
+        "auto_refresh",
+        "brain_changes_via",
+        "automation_may_merge",
+        "practice_review",
+        "pin_plugins_and_skills"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "auto_refresh": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "source",
+              "cadence"
+            ],
+            "properties": {
+              "source": {
+                "type": "string"
+              },
+              "cadence": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "brain_changes_via": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "automation_may_merge": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "practice_review": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "light",
+            "deep"
+          ],
+          "properties": {
+            "light": {
+              "type": "string"
+            },
+            "deep": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "pin_plugins_and_skills": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "rollout": {
+      "type": "object",
+      "required": [
+        "load_via",
+        "pilot",
+        "multi_team"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "load_via": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "pilot": {
+          "type": "object",
+          "required": [
+            "who",
+            "duration_days"
+          ],
+          "properties": {
+            "who": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "duration_days": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "multi_team": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "description": "Optional source and verification metadata for mutable team facts.",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "source",
+          "verified_at"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "description": "YAML path to the fact or group of facts being documented."
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Authoritative source where the fact was confirmed."
+          },
+          "verified_at": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Date or timestamp when the fact was last verified."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "question",
+          "owner",
+          "priority"
+        ],
+        "properties": {
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "priority": {
+            "enum": [
+              "P1",
+              "P2",
+              "P3"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

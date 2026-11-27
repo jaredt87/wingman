@@ -1,0 +1,23 @@
+name: Validate team brain configuration
+
+on:
+  pull_request:
+  push:
+    branches: [main, "feat/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  schema-validation:
+    name: Schema validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validators
+        run: python -m pip install --disable-pip-version-check PyYAML jsonschema
+      - name: Validate checked-in YAML
+        run: python tooling/validate-configs.py
